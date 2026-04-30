@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eaglercraft Player</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 20px;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 5px;
+        }
+
+        h1 span {
+            color: #1abc99;
+        }
+
+        .subtitle {
+            color: #8b949e;
+            margin-bottom: 50px;
+        }
+
+        .hub-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+        }
+
+        .emoji-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            margin: 10px 0;
+        }
+
+        .card p {
+            color: #8b949e;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .play-btn {
+            background-color: #10b981;
+            color: white;
+            padding: 12px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: opacity 0.2s;
+        }
+
+        /* Specific colors for themes */
+        .blue-card .play-btn { background-color: #3b82f6; }
+        .purple-card .play-btn { background-color: #8b5cf6; }
+
+        .play-btn:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            margin-top: 60px;
+            color: #484f58;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h1><span>Eaglercraft</span> Player</h1>
+    <p class="subtitle">Play Minecraft unblocked HAHAHAHHAH YOU CANT BLOCK ME stupid securly.</p>
+
+    <div class="hub-container">
+        <div class="card">
+            <span class="emoji-icon">⚔️</span>
+            <h2>Eaglercraft Release 1.8.8</h2>
+            <p>Mainstream & most popular</p>
+            <a href="1.8.8.html" class="play-btn">Play Now →</a>
+        </div>
+
+        <div class="card blue-card">
+            <span class="emoji-icon">✨</span>
+            <h2>Eaglercraft Release 1.11.2</h2>
+            <p>Latest and most modern</p>
+            <a href="1.11.2.html" class="play-btn">Play Now →</a>
+        </div>
+
+        <div class="card purple-card">
+            <span class="emoji-icon">🧊</span>
+            <h2>Eaglercraft Release Alpha 1.5</h2>
+            <p>honestly nobody plays this</p>
+            <a href="alpha.html" class="play-btn">Play Now →</a>
+        </div>
+    </div>
+
+    <footer>© 2026 Eaglercraft Player by a lindergardener</footer>
+
+</body>
+</html>
