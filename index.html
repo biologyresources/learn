@@ -142,10 +142,38 @@
             background: rgba(26, 188, 153, 0.1);
         }
 
+        /* Disclaimer Styling */
+        .disclaimer-btn {
+            background: transparent;
+            border: none;
+            color: #484f58;
+            cursor: pointer;
+            font-size: 0.7rem;
+            text-decoration: underline;
+            margin-top: 5px;
+            padding: 0;
+        }
+
+        #disclaimer-text {
+            display: none;
+            max-width: 600px;
+            color: #8b949e;
+            font-size: 0.75rem;
+            margin-top: 10px;
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
         footer {
             margin-top: 60px;
             color: #484f58;
             font-size: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     </style>
 </head>
@@ -194,20 +222,34 @@
         </div>
     </div>
 
-    <footer>Made by Liam Lindgren</footer>
+    <footer>
+        Made by Liam Lindgren
+        <button class="disclaimer-btn" onclick="toggleDisclaimer()">View Disclaimer</button>
+        <div id="disclaimer-text">
+            This project is for educational purposes only. All assets belong to their respective owners. Turn off Wi-Fi to prevent network blocking.
+        </div>
+    </footer>
 
     <script>
         function toggleVersions() {
             const section = document.getElementById('more-versions-section');
             const btn = document.getElementById('toggleButton');
             
-            // Check computed style to ensure it works on the very first click
             if (window.getComputedStyle(section).display === 'none') {
                 section.style.display = 'block';
                 btn.textContent = 'Hide Versions';
             } else {
                 section.style.display = 'none';
                 btn.textContent = 'More Versions';
+            }
+        }
+
+        function toggleDisclaimer() {
+            const text = document.getElementById('disclaimer-text');
+            if (window.getComputedStyle(text).display === 'none') {
+                text.style.display = 'block';
+            } else {
+                text.style.display = 'none';
             }
         }
     </script>
