@@ -88,9 +88,8 @@
             opacity: 0.9;
         }
 
-        /* More Versions Styling */
         #more-versions-section {
-            display: none; /* Hidden by default */
+            display: none;
             margin-top: 30px;
             width: 100%;
             max-width: 1000px;
@@ -142,7 +141,6 @@
             background: rgba(26, 188, 153, 0.1);
         }
 
-        /* Disclaimer Styling */
         .disclaimer-btn {
             background: transparent;
             border: none;
@@ -205,10 +203,8 @@
         </div>
     </div>
 
-    <!-- The Toggle Button -->
     <button class="toggle-btn" id="toggleButton" onclick="toggleVersions()">More Versions</button>
 
-    <!-- Hidden 10 Button Section -->
     <div id="more-versions-section">
         <div class="versions-grid">
             <a href="eagly.html" class="ver-btn">EaglyMC 1.20</a>
@@ -226,11 +222,55 @@
         Made by Liam Lindgren
         <button class="disclaimer-btn" onclick="toggleDisclaimer()">View Disclaimer</button>
         <div id="disclaimer-text">
-            This site is a personal project intended for home use. Please do not use this during class or on school property. Respect your teachers and keep the gaming for your own time. I do not take credit for or own any of the assets here which belong to their respective owners aside from index.html.
+            This site is a personal project intended for home use. Please do not use this during class or on school property. 
+            Respect your teachers and keep the gaming for your own time. I do not take credit for or own any of the assets 
+            here which belong to their respective owners aside from index.html.
         </div>
     </footer>
 
     <script>
+        // --- 1. STEALTH LOCKS (Title & Favicon) ---
+        const lockedTitle = "Photosynthesis in Plants";
+        const lockedIcon = "https://www.google.com/favicon.ico";
+
+        // Force the title
+        document.title = lockedTitle;
+        Object.defineProperty(document, 'title', {
+            get: function() { return lockedTitle; },
+            set: function() { /* Block attempts to change title */ },
+            configurable: false
+        });
+
+        // Force the icon
+        function lockFavicon() {
+            const links = document.querySelectorAll("link[rel*='icon']");
+            links.forEach(link => link.parentNode.removeChild(link));
+
+            const newLink = document.createElement('link');
+            newLink.type = 'image/x-icon';
+            newLink.rel = 'icon';
+            newLink.href = lockedIcon;
+            document.getElementsByTagName('head')[0].appendChild(newLink);
+        }
+
+        lockFavicon();
+
+        // Monitor for changes
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.tagName === 'LINK' && node.rel.includes('icon')) {
+                        if (node.href !== lockedIcon) {
+                            node.parentNode.removeChild(node);
+                            lockFavicon();
+                        }
+                    }
+                });
+            });
+        });
+        observer.observe(document.head, { childList: true, subtree: true });
+
+        // --- 2. UI FUNCTIONS (Toggle Sections) ---
         function toggleVersions() {
             const section = document.getElementById('more-versions-section');
             const btn = document.getElementById('toggleButton');
@@ -253,6 +293,5 @@
             }
         }
     </script>
-
 </body>
 </html>
